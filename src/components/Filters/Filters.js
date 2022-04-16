@@ -4,11 +4,14 @@ import Gender from "./Category/Gender";
 import Species from "./Category/Species";
 import Status from "./Category/Status";
 
-const Filters = ({ resoults }) => {
+const Filters = ({ setStatus, setPageNumber, setGender, setSpecies }) => {
 
-
-
-
+    let clearn = () => {
+        setStatus('');
+        setGender('');
+        setSpecies('');
+        window.location.reload(false)
+    }
 
     return (
         <div className="col-3">
@@ -16,15 +19,15 @@ const Filters = ({ resoults }) => {
             <div
                 style={{ cursor: "pointer" }}
                 className="text-center text-primary text-decoration-underline"
-
+                onClick={() => clearn()}
             >
                 Clear Filters
             </div>
             <div className="accordion"
                 id="accordionPanelsStayOpenExample">
-                <Status />
-                <Species />
-                <Gender />
+                <Status setStatus={setStatus} setPageNumber={setPageNumber} />
+                <Species setSpecies={setSpecies} setPageNumber={setPageNumber} />
+                <Gender setGender={setGender} setPageNumber={setPageNumber} />
             </div>
         </div>
     )

@@ -2,10 +2,9 @@
 
 import FilterBTN from "../FilterBTN";
 
-const Gender = () => {
+const Gender = ({ setGender, setPageNumber }) => {
 
-    let status = ["Dead", "Alive", "unknown"]
-
+    let gender = ['female', 'male', 'genderless', 'unknown']
     return (
         <div className="accordion-item">
             <h2 className="accordion-header" id="panelsStayOpen-headingOne">
@@ -14,11 +13,11 @@ const Gender = () => {
                 </button>
             </h2>
             <div id="panelsStayOpen-collapseOne" className="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
-                <div className="accordion-body">
-                    {status.map((item, index) => 
-                        ( 
-                            <FilterBTN key={index}/>
-                        )
+                <div className="accordion-body d-flex flex-wrap ">
+                    {gender.map((items, index) =>
+                    (
+                        <FilterBTN task={setGender} key={index} items={items} name="gender" index={index} setPageNumber={setPageNumber} />
+                    )
                     )}
                 </div>
             </div>
